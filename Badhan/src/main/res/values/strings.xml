@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BADHAN</string>
+    <string name="action_settings">Settings</string>
+    <string name="blood_group">Blood Group:</string>
+    <string name="search">Search</string>
+    <string name="add_new_donor">Add New Donor</string>
+    <string name="mobile">Mobile No: </string>
+    <string name="name">Name: </string>
+    <string name="last_donation_date">Last Donation Date: </string>
+    <string name="no_of_donation">No of Donation: </string>
+    <string name="update_donor_information">Update Donor Information</string>
+    <string name="update">Update</string>
+    <string name="add_donor">Add Donor</string>
+    <string name="edit_all">Edit All</string>
+    <string name="donor_list">Donor List</string>
+
+
+    <string-array name="blood_groups">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+    </string-array>
+
+</resources>

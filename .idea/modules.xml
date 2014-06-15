@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Badhan/Badhan.iml" filepath="$PROJECT_DIR$/Badhan/Badhan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BadhanBloodDonorManagement.iml" filepath="$PROJECT_DIR$/BadhanBloodDonorManagement.iml" />
+    </modules>
+  </component>
+</project>
+
