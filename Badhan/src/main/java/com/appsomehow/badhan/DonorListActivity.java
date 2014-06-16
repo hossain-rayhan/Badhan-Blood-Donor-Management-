@@ -2,6 +2,7 @@ package com.appsomehow.badhan;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -97,35 +98,6 @@ public class DonorListActivity extends Activity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_add:
-                Intent addNewDonor = new Intent(DonorListActivity.this, AddNewDonorActivity.class);
-                startActivity(addNewDonor);
-                finish();
-                break;
-
-            case R.id.action_donors:
-                Intent donorList = new Intent(DonorListActivity.this, DonorListActivity.class);
-                startActivity(donorList);
-                finish();
-                break;
-
-            default:
-                break;
-        }
-
-        return true;
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
         populateListAdapter();
@@ -133,16 +105,14 @@ public class DonorListActivity extends Activity {
 
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
+
     private void populateListAdapter() {
         donorList = DbManager.getInstance().getAllDonors();
         donorListAdapter = new DonorListAdapter(this, R.layout.donor_list_item, donorList);
         lvDonor.setAdapter(donorListAdapter);
-    }
-
-
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        finish();
     }
 }

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
@@ -66,34 +67,6 @@ public class DonorUpdateActivity extends Activity {
         setupButton(btnUpdate);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_add:
-                Intent addNewDonor = new Intent(DonorUpdateActivity.this, AddNewDonorActivity.class);
-                startActivity(addNewDonor);
-                finish();
-                break;
-
-            case R.id.action_donors:
-                Intent donorList = new Intent(DonorUpdateActivity.this, DonorListActivity.class);
-                startActivity(donorList);
-                finish();
-                break;
-
-            default:
-                break;
-        }
-
-        return true;
-    }
     private void addListenerOnCheckBox() {
         checkBoxEditAll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +85,11 @@ public class DonorUpdateActivity extends Activity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 
     private void setUpDonorCurrentInformation() {

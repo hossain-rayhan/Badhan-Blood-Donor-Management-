@@ -37,6 +37,18 @@ public class AvailableDonorListAdapter extends ArrayAdapter<Donor> {
     }
 
     @Override
+    public int getViewTypeCount() {
+        if (getCount() != 0)
+            return getCount();
+        return 1;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Donor donor = getItem(position);
 

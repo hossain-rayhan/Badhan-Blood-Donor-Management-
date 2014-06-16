@@ -2,6 +2,7 @@ package com.appsomehow.badhan;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -49,36 +50,10 @@ public class AvailableDonorListActivity extends Activity {
 
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return true;
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_add:
-                Intent addNewDonor = new Intent(AvailableDonorListActivity.this, AddNewDonorActivity.class);
-                startActivity(addNewDonor);
-                finish();
-                break;
-
-            case R.id.action_donors:
-                Intent donorList = new Intent(AvailableDonorListActivity.this, DonorListActivity.class);
-                startActivity(donorList);
-                finish();
-                break;
-
-            default:
-                break;
-        }
-
-        return true;
-    }
-
 
     public List<Donor> getAvailableDonor(String bloodGroup) {
         List<Donor> availableList = new ArrayList<Donor>();

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
@@ -58,34 +59,6 @@ public class AddNewDonorActivity extends Activity {
         setupButton(btnAdd);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_add:
-                Intent addNewDonor = new Intent(AddNewDonorActivity.this, AddNewDonorActivity.class);
-                startActivity(addNewDonor);
-                finish();
-                break;
-
-            case R.id.action_donors:
-                Intent donorList = new Intent(AddNewDonorActivity.this, DonorListActivity.class);
-                startActivity(donorList);
-                finish();
-                break;
-
-            default:
-                break;
-        }
-
-        return true;
-    }
 
     private void setDefaultInfo() {
         etNoOfDonation.setText(""+0);
@@ -121,6 +94,11 @@ public class AddNewDonorActivity extends Activity {
             }
 
         });
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 
     private void createNewDonor(Donor donor) {

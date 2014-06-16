@@ -14,7 +14,6 @@ import com.appsomehow.badhan.R;
 import com.appsomehow.badhan.helper.Constant;
 import com.appsomehow.badhan.helper.DateFormatter;
 import com.appsomehow.badhan.model.Donor;
-
 import java.util.List;
 
 public class DonorListAdapter extends ArrayAdapter<Donor> {
@@ -36,6 +35,18 @@ public class DonorListAdapter extends ArrayAdapter<Donor> {
         ImageButton btnCallDonor;
         ImageButton btnSmsDonor;
         ImageButton btnUpdateDonor;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        if (getCount() != 0)
+            return getCount();
+        return 1;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     @Override
@@ -62,10 +73,10 @@ public class DonorListAdapter extends ArrayAdapter<Donor> {
             holder.btnCallDonor = (ImageButton) convertView.findViewById(R.id.btn_call_donor);
             holder.btnUpdateDonor = (ImageButton) convertView.findViewById(R.id.btn_update_donor);
             holder.btnSmsDonor = (ImageButton) convertView.findViewById(R.id.btn_sms_donor);
-
             convertView.setTag(holder);
-        } else
+        } else{
             holder = (ViewHolder) convertView.getTag();
+        }
 
         holder.mobile.setText(donor.getMobile());
         holder.name.setText(donor.getName());
@@ -73,7 +84,9 @@ public class DonorListAdapter extends ArrayAdapter<Donor> {
         holder.lastDonationDate.setText(DateFormatter.getStringFromDate(donor.getLastDonationDate()));
         holder.noOfDonation.setText("" + donor.getNoOfDonation());
 
+
         final ViewHolder finalHolder = holder;
+
         holder.btnCallDonor.setOnClickListener(new View.OnClickListener() {
 
             @Override

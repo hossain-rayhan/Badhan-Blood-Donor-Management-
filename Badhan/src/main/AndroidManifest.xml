@@ -22,20 +22,45 @@
         </activity>
         <activity
             android:name="com.appsomehow.badhan.AddNewDonorActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:parentActivityName=".MainActivity"
+            android:configChanges="orientation|screenSize">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.apptitive.ramadan.MainActivity" />
         </activity>
+
         <activity
             android:name="com.appsomehow.badhan.DonorListActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/donor_list"
+            android:parentActivityName=".MainActivity"
             android:windowSoftInputMode="stateHidden">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.apptitive.ramadan.MainActivity" />
         </activity>
         <activity
             android:name="com.appsomehow.badhan.DonorUpdateActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:parentActivityName=".DonorListActivity"
+            android:configChanges="orientation|screenSize">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.apptitive.ramadan.DonorListActivity" />
         </activity>
         <activity
             android:name="com.appsomehow.badhan.AvailableDonorListActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:parentActivityName=".MainActivity"
+            android:configChanges="orientation|screenSize">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.apptitive.ramadan.MainActivity" />
         </activity>
     </application>
 

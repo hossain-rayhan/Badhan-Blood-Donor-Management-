@@ -1,16 +1,17 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/action_add"
         android:orderInCategory="100"
-        android:showAsAction="always"
+        app:showAsAction="always"
         android:icon="@drawable/icon_plus_image_selector"
         android:title="@string/add_donor"
         />
     <item
         android:id="@+id/action_donors"
         android:orderInCategory="100"
-        android:showAsAction="always"
+        app:showAsAction="always"
         android:icon="@drawable/icon_donor_image_selector"
         android:title="Donor List"/>
 

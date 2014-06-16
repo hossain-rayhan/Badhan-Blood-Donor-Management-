@@ -29,6 +29,17 @@
         android:layout_marginTop="@dimen/dp_10"
         android:background="@null"/>
 
+    <ImageButton
+        android:id="@+id/btn_sms_donor"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/sms_btn_image_selector"
+        android:layout_toLeftOf="@id/btn_call_donor"
+        android:layout_alignParentTop="true"
+        android:paddingRight="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@null"/>
+
     <TextView
         android:id="@+id/blood_group"
         android:layout_height="wrap_content"
