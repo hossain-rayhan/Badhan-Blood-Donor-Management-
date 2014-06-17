@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.Layout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,6 +17,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.appsomehow.badhan.helper.ActionBarHelper;
@@ -32,16 +35,17 @@ public class DonorUpdateActivity extends Activity {
 
     static final int DATE_DIALOG_ID = 999;
     private Donor donor;
-    public TextView etMobile,tvName,tvBloodGroup;
-    public EditText etName;
-    public Spinner spBloodGroup;
-    public EditText etLastDonationDate;
-    public EditText etNoOfDonation;
-    public Button btnUpdate;
-    public CheckBox checkBoxEditAll;
+    private TextView etMobile,tvName,tvBloodGroup;
+    private EditText etName;
+    private Spinner spBloodGroup;
+    private EditText etLastDonationDate;
+    private EditText etNoOfDonation;
+    private Button btnUpdate;
+    private CheckBox checkBoxEditAll;
     private int year;
     private int month;
     private int day;
+    private LinearLayout llName,llBloogGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +63,19 @@ public class DonorUpdateActivity extends Activity {
         checkBoxEditAll = (CheckBox) findViewById(R.id.cb_edit_all);
         tvName = (TextView) findViewById(R.id.tv_name);
         tvBloodGroup = (TextView) findViewById(R.id.tv_blood_group);
+        llName = (LinearLayout)findViewById(R.id.tupple_name);
+        llBloogGroup = (LinearLayout) findViewById(R.id.tupple_blood_group);
 
         setUpDonorCurrentInformation();
         setCurrentDateOnDatePicker();
         addListenerOnCheckBox();
         addListenerOnDateField();
+        if (checkBoxEditAll.isChecked()){
+            Log.e("checked ", "true");
+            llName.setVisibility(View.VISIBLE);
+            llBloogGroup.setVisibility(View.VISIBLE);
+        }else
+            Log.e("checked ", "false");
         setupButton(btnUpdate);
     }
 
@@ -72,24 +84,15 @@ public class DonorUpdateActivity extends Activity {
             @Override
             public void onClick(View view) {
                 if (checkBoxEditAll.isChecked()){
-                    tvName.setVisibility(View.VISIBLE);
-                    etName.setVisibility(View.VISIBLE);
-                    tvBloodGroup.setVisibility(View.VISIBLE);
-                    spBloodGroup.setVisibility(View.VISIBLE);
+                    llName.setVisibility(View.VISIBLE);
+                    llBloogGroup.setVisibility(View.VISIBLE);
                 }
                 else {
-                    tvName.setVisibility(View.GONE);
-                    etName.setVisibility(View.GONE);
-                    tvBloodGroup.setVisibility(View.GONE);
-                    spBloodGroup.setVisibility(View.GONE);
+                    llName.setVisibility(View.GONE);
+                    llBloogGroup.setVisibility(View.GONE);
                 }
             }
         });
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
     }
 
     private void setUpDonorCurrentInformation() {
@@ -185,11 +188,4 @@ public class DonorUpdateActivity extends Activity {
                     .append(" "));
         }
     };
-
-    @Override
-    public void onDestroy()
-    {
-        super.onDestroy();
-        finish();
-    }
 }

@@ -1,175 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:gravity="center_vertical"
-    android:background="@drawable/bg">
+    android:background="@drawable/bg"
+    android:gravity="center_vertical">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dp_ng_60"
         android:text="@string/update_donor_information"
         android:textColor="@color/red"
-        android:textStyle="bold|italic"
         android:textSize="@dimen/text_size_25"
-        android:id="@+id/textView" />
+        android:textStyle="bold|italic" />
 
-    <CheckBox
-        android:id="@+id/cb_edit_all"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/tupple_edit_all"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@id/tv_mobile"
-        android:layout_marginLeft="@dimen/dp_20"/>
-
-    <TextView
-        android:id="@+id/tv_edit_all"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/cb_edit_all"
-        android:layout_alignTop="@id/cb_edit_all"
-        android:paddingTop="@dimen/dp_5"
-        android:layout_marginLeft="@dimen/dp_20"
-        android:text="@string/edit_all"
-        android:textColor="@color/red" />
-
-    <TextView
-        android:id="@+id/tv_mobile"
-        android:layout_marginLeft="@dimen/dp_20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cb_edit_all"
-        android:textColor="@color/red"
-        android:textSize="@dimen/text_size_20"
-        android:text="@string/mobile" />
-
-    <TextView
-        android:id="@+id/et_mobile"
-        android:layout_height="@dimen/dp_20"
-        android:layout_width="match_parent"
-        android:layout_toRightOf="@id/tv_mobile"
-        android:layout_alignTop="@id/tv_mobile"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginLeft="@dimen/dp_20"
-        android:layout_marginRight="@dimen/dp_20"
-        android:textSize="@dimen/text_size_15"
-        android:textStyle="bold|italic"
-        android:inputType="phone"
-        android:clickable="false"
-        android:cursorVisible="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false" />
-
-
-    <TextView
-        android:id="@+id/tv_name"
+        android:layout_below="@id/textView"
         android:layout_marginTop="@dimen/dp_10"
-        android:layout_below="@id/tv_mobile"
-        android:layout_alignRight="@id/tv_mobile"
-        android:layout_width="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_weight="1">
+            <CheckBox
+                android:id="@+id/cb_edit_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="@dimen/dp_10"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_edit_all"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/edit_all"
+            android:textColor="@color/red"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tupple_mobile"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/red"
-        android:textSize="@dimen/text_size_20"
-        android:text="@string/name"
-        android:visibility="gone" />
-
-    <EditText
-        android:id="@+id/et_name"
-        android:layout_height="@dimen/dp_20"
-        android:layout_width="match_parent"
-        android:layout_toRightOf="@id/tv_name"
-        android:layout_alignTop="@id/tv_name"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginLeft="@dimen/dp_20"
-        android:layout_marginRight="@dimen/dp_20"
-        android:inputType="text"
-        android:background="@color/light"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/tv_blood_group"
+        android:layout_below="@id/tupple_edit_all"
         android:layout_marginTop="@dimen/dp_10"
-        android:layout_below="@id/tv_name"
-        android:layout_alignRight="@id/tv_name"
-        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_mobile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="@string/mobile"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_size_15" />
+
+        <TextView
+            android:id="@+id/et_mobile"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_20"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_size_15"
+            android:textStyle="bold|italic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tupple_name"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/red"
-        android:textSize="@dimen/text_size_15"
-        android:text="@string/blood_group"
-        android:visibility="gone" />
+        android:layout_below="@id/tupple_mobile"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal"
+        android:visibility="gone">
 
-    <Spinner
-        android:id="@+id/sp_blood_group"
-        android:layout_height="@dimen/dp_20"
-        android:layout_width="match_parent"
-        android:layout_toRightOf="@id/tv_blood_group"
-        android:layout_alignTop="@id/tv_blood_group"
-        android:entries="@array/blood_groups"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginLeft="@dimen/dp_20"
-        android:layout_marginRight="@dimen/dp_20"
-        android:background="@color/light"
-        android:visibility="gone" />
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="@string/name"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_size_15" />
 
-    <TextView
-        android:id="@+id/tv_last_donation_date"
-        android:layout_marginTop="@dimen/dp_20"
-        android:layout_below="@id/tv_blood_group"
-        android:layout_alignRight="@id/tv_blood_group"
-        android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_20"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_weight="1"
+            android:background="@color/light"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tupple_blood_group"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/red"
-        android:textSize="@dimen/text_size_12"
-        android:text="@string/last_donation_date" />
+        android:layout_below="@id/tupple_name"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal"
+        android:visibility="gone">
 
-    <EditText
-        android:id="@+id/et_last_donation_date"
-        android:layout_height="@dimen/dp_20"
-        android:layout_width="match_parent"
-        android:layout_toRightOf="@id/tv_last_donation_date"
-        android:layout_alignTop="@id/tv_last_donation_date"
-        android:layout_marginLeft="@dimen/dp_20"
-        android:layout_marginRight="@dimen/dp_20"
-        android:background="@color/light" />
+        <TextView
+            android:id="@+id/tv_blood_group"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="@string/blood_group"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_size_15" />
 
-    <TextView
-        android:id="@+id/tv_no_of_donation"
-        android:layout_marginTop="@dimen/dp_18"
-        android:layout_below="@id/tv_last_donation_date"
-        android:layout_alignRight="@id/tv_last_donation_date"
-        android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/sp_blood_group"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_20"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_weight="1"
+            android:background="@color/light"
+            android:entries="@array/blood_groups" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tupple_last_donation_date"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/red"
-        android:textSize="@dimen/text_size_12"
-        android:text="@string/no_of_donation" />
+        android:layout_below="@id/tupple_blood_group"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/et_no_of_donation"
-        android:layout_height="@dimen/dp_20"
-        android:layout_width="match_parent"
-        android:layout_toRightOf="@id/tv_no_of_donation"
-        android:layout_alignTop="@id/tv_no_of_donation"
-        android:layout_marginLeft="@dimen/dp_20"
-        android:layout_marginRight="@dimen/dp_20"
-        android:inputType="number"
-        android:background="@color/light" />
+        <TextView
+            android:id="@+id/tv_last_donation_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="@string/last_donation_date"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_size_15" />
+
+        <EditText
+            android:id="@+id/et_last_donation_date"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_20"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_weight="1"
+            android:background="@color/light" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tupple_no_of_donation"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tupple_last_donation_date"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_no_of_donation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="@string/no_of_donation"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_size_15" />
+
+        <EditText
+            android:id="@+id/et_no_of_donation"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_20"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_weight="1"
+            android:background="@color/light"
+            android:inputType="number" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_update"
         android:layout_width="@dimen/dp_120"
         android:layout_height="@dimen/dp_30"
-        android:layout_alignLeft="@id/et_no_of_donation"
-        android:layout_below="@id/et_no_of_donation"
-        android:clickable="true"
+        android:layout_below="@id/tupple_no_of_donation"
+        android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/dp_30"
-        android:paddingRight="@dimen/dp_50"
         android:background="@drawable/submit_btn_image_selector"
+        android:clickable="true"
+        android:paddingLeft="@dimen/dp_10"
         android:text="@string/update"
         android:textColor="@android:color/white"
-        android:textStyle="bold"
         android:textSize="@dimen/text_size_15"
-        android:paddingLeft="@dimen/dp_20"
-        android:layout_alignRight="@+id/textView" />
-
+        android:textStyle="bold" />
 </RelativeLayout>
+
