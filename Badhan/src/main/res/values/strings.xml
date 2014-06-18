@@ -8,7 +8,7 @@
     <string name="add_new_donor">Add New Donor</string>
     <string name="mobile">Mobile No: </string>
     <string name="name">Name: </string>
-    <string name="last_donation_date">Last Donation Date: </string>
+    <string name="last_donation_date">Last Donation: </string>
     <string name="no_of_donation">No of Donation: </string>
     <string name="update_donor_information">Update Donor Information</string>
     <string name="update">Update</string>

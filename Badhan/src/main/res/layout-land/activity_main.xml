@@ -2,47 +2,57 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:background="@drawable/bg_home" >
+    android:background="@drawable/bg"
+    android:gravity="center">
 
-    <TextView
-        android:id="@+id/tv_blood_group"
+ <ImageView
+        android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="250dp"
-        android:layout_marginTop="@dimen/dp_30"
-        android:text="@string/blood_group"
-        android:textColor="@color/red"
-        android:textSize="@dimen/activity_main_btn_search_text_size"
-        android:textStyle="bold" />
+        android:src="@drawable/logo_badhan" />
 
-    <Spinner
-        android:id="@+id/sp_blood_group"
-        android:layout_height="@dimen/activity_main_sp_blood_group_padding_left"
-        android:layout_toRightOf="@id/tv_blood_group"
-        android:entries="@array/blood_groups"
-        android:layout_width="@dimen/dp_20"
-        android:background="@drawable/edit_text"
-        android:paddingLeft="@dimen/dp_50"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/tv_blood_group"
-        android:layout_alignBottom="@+id/tv_blood_group" />
+    <RelativeLayout
+        android:id="@+id/rl_blood_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/logo"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:paddingTop="@dimen/dp_10">
 
-    <Button
-        android:id="@+id/btn_search"
-        android:layout_width="@dimen/activity_main_btn_search_width"
-        android:layout_height="@dimen/activity_main_btn_search_height"
-        android:layout_alignLeft="@id/sp_blood_group"
-        android:layout_below="@id/sp_blood_group"
-        android:clickable="true"
-        android:layout_marginTop="@dimen/dp_20"
-        android:layout_marginLeft="@dimen/dp_5"
-        android:paddingRight="@dimen/dp_50"
-        android:background="@drawable/submit_btn_image_selector"
-        android:text="@string/search"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/activity_main_btn_search_text_size"
-        android:textStyle="bold"
-        android:paddingLeft="@dimen/activity_main_btn_search_padding_left"/>
+        <TextView
+            android:id="@+id/tv_blood_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/blood_group"
+            android:textColor="@color/red"
+            android:textSize="@dimen/dp_20"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/sp_blood_group"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_blood_group"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toRightOf="@id/tv_blood_group"
+            android:background="@drawable/edit_text"
+            android:entries="@array/blood_groups"
+            android:paddingLeft="@dimen/dp_50" />
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="@dimen/dp_30"
+            android:layout_alignLeft="@id/sp_blood_group"
+            android:layout_below="@id/sp_blood_group"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@drawable/submit_btn_image_selector"
+            android:clickable="true"
+            android:text="@string/search"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_15"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
 </RelativeLayout>
