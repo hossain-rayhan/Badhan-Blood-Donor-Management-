@@ -3,14 +3,8 @@ package com.appsomehow.badhan;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.InputType;
-import android.text.Layout;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -35,7 +29,7 @@ public class DonorUpdateActivity extends Activity {
 
     static final int DATE_DIALOG_ID = 999;
     private Donor donor;
-    private TextView etMobile,tvName,tvBloodGroup;
+    private TextView etMobile;
     private EditText etName;
     private Spinner spBloodGroup;
     private EditText etLastDonationDate;
@@ -45,7 +39,7 @@ public class DonorUpdateActivity extends Activity {
     private int year;
     private int month;
     private int day;
-    private LinearLayout llName,llBloogGroup;
+    private LinearLayout llName, llBloogGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,21 +55,18 @@ public class DonorUpdateActivity extends Activity {
         etLastDonationDate.setInputType(InputType.TYPE_NULL);
         btnUpdate = (Button) findViewById(R.id.btn_update);
         checkBoxEditAll = (CheckBox) findViewById(R.id.cb_edit_all);
-        tvName = (TextView) findViewById(R.id.tv_name);
-        tvBloodGroup = (TextView) findViewById(R.id.tv_blood_group);
-        llName = (LinearLayout)findViewById(R.id.tupple_name);
+        llName = (LinearLayout) findViewById(R.id.tupple_name);
         llBloogGroup = (LinearLayout) findViewById(R.id.tupple_blood_group);
 
         setUpDonorCurrentInformation();
         setCurrentDateOnDatePicker();
         addListenerOnCheckBox();
         addListenerOnDateField();
-        if (checkBoxEditAll.isChecked()){
-            Log.e("checked ", "true");
+
+        if (Helper.isEditAllChecked) {
             llName.setVisibility(View.VISIBLE);
             llBloogGroup.setVisibility(View.VISIBLE);
-        }else
-            Log.e("checked ", "false");
+        }
         setupButton(btnUpdate);
     }
 
@@ -83,16 +74,37 @@ public class DonorUpdateActivity extends Activity {
         checkBoxEditAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (checkBoxEditAll.isChecked()){
+                if (checkBoxEditAll.isChecked()) {
+                    Helper.isEditAllChecked = true;
                     llName.setVisibility(View.VISIBLE);
                     llBloogGroup.setVisibility(View.VISIBLE);
-                }
-                else {
+                } else {
+                    Helper.isEditAllChecked = false;
                     llName.setVisibility(View.GONE);
                     llBloogGroup.setVisibility(View.GONE);
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Helper.isEditAllChecked = false;
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                super.onBackPressed();
+                Helper.isEditAllChecked = false;
+                break;
+
+            default:
+                break;
+        }
+        return true;
     }
 
     private void setUpDonorCurrentInformation() {
@@ -126,7 +138,7 @@ public class DonorUpdateActivity extends Activity {
                     e.printStackTrace();
                 }
                 String donationFrequency = etNoOfDonation.getText().toString();
-                if( donationFrequency!= null && !donationFrequency.isEmpty()){
+                if (donationFrequency != null && !donationFrequency.isEmpty()) {
                     donor.setNoOfDonation(Integer.parseInt(donationFrequency));
                 }
                 if (DonorInfoValidation.isAllInformationFilled(donor)) {
@@ -188,4 +200,5 @@ public class DonorUpdateActivity extends Activity {
                     .append(" "));
         }
     };
+
 }
