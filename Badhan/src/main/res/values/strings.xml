@@ -15,6 +15,9 @@
     <string name="add_donor">Add Donor</string>
     <string name="edit_all">Edit All</string>
     <string name="donor_list">Donor List</string>
+    <string name="sms">SMS</string>
+    <string name="call">Call</string>
+    <string name="available_donors">Available Donors</string>
 
 
     <string-array name="blood_groups">

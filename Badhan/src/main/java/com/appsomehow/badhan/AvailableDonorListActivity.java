@@ -1,13 +1,15 @@
 package com.appsomehow.badhan;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.appsomehow.badhan.adapter.AvailableDonorListAdapter;
@@ -15,6 +17,7 @@ import com.appsomehow.badhan.helper.ActionBarHelper;
 import com.appsomehow.badhan.helper.Constant;
 import com.appsomehow.badhan.helper.DateFormatter;
 import com.appsomehow.badhan.helper.DbManager;
+import com.appsomehow.badhan.helper.Helper;
 import com.appsomehow.badhan.model.Donor;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,8 +34,8 @@ public class AvailableDonorListActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DbManager.init(this);
-        setContentView(R.layout.available_donor_list);
         ActionBarHelper.changeActionBarStyle(this);
+        setContentView(R.layout.available_donor_list);
 
         tvNoDonorAvailable = (TextView) findViewById(R.id.tv_no_donor_available);
         donorList = DbManager.getInstance().getAllDonors();

@@ -1,15 +1,17 @@
 package com.appsomehow.badhan;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -17,7 +19,10 @@ import android.view.View.OnClickListener;
 import com.appsomehow.badhan.adapter.DonorListAdapter;
 import com.appsomehow.badhan.helper.ActionBarHelper;
 import com.appsomehow.badhan.helper.DbManager;
+import com.appsomehow.badhan.helper.Helper;
 import com.appsomehow.badhan.model.Donor;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class DonorListActivity extends Activity {
@@ -27,7 +32,8 @@ public class DonorListActivity extends Activity {
     private EditText inputSearch;
     private ListView lvDonor;
     private int textLength = 0;
-    private List<Donor> donorList, searchedDonorList;
+    private List<Donor> donorList, searchedDonorList,donorsToDelete;
+    Donor donorPressed;
     private Button cancelSearch;
 
     @Override
@@ -43,6 +49,7 @@ public class DonorListActivity extends Activity {
 
         searchedDonorList = DbManager.getInstance().getAllDonors();
         donorList = DbManager.getInstance().getAllDonors();
+        donorsToDelete = new ArrayList<Donor>();
 
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -54,26 +61,28 @@ public class DonorListActivity extends Activity {
                 searchedDonorList.clear();
                 for (int i = 0; i < donorList.size(); i++) {
                     if (textLength <= donorList.get(i).getBloodGroup().length()) {
-                        if (inputSearch.getText().toString().equalsIgnoreCase((String)donorList.get(i).getBloodGroup().subSequence(0,textLength))) {
+                        if (inputSearch.getText().toString().equalsIgnoreCase((String) donorList.get(i).getBloodGroup().subSequence(0, textLength))) {
                             searchedDonorList.add(donorList.get(i));
                             continue;
                         }
                     }
                     if (textLength <= donorList.get(i).getMobile().length()) {
-                        if (inputSearch.getText().toString().equalsIgnoreCase((String)donorList.get(i).getMobile().subSequence(0,textLength))) {
+                        if (inputSearch.getText().toString().equalsIgnoreCase((String) donorList.get(i).getMobile().subSequence(0, textLength))) {
                             searchedDonorList.add(donorList.get(i));
                             continue;
                         }
                     }
                     if (textLength <= donorList.get(i).getName().length()) {
-                        if (inputSearch.getText().toString().equalsIgnoreCase((String)donorList.get(i).getName().subSequence(0,textLength))) {
+                        if (inputSearch.getText().toString().equalsIgnoreCase((String) donorList.get(i).getName().subSequence(0, textLength))) {
                             searchedDonorList.add(donorList.get(i));
                             continue;
                         }
                     }
                 }
-                lvDonor.setAdapter(new DonorListAdapter(DonorListActivity.this, R.layout.donor_list_item, searchedDonorList));
+
+
             }
+
 
             @Override
             public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
@@ -94,8 +103,57 @@ public class DonorListActivity extends Activity {
             }
         });
 
+        lvDonor.setAdapter(new DonorListAdapter(DonorListActivity.this, R.layout.donor_list_item, searchedDonorList));
+        lvDonor.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+        lvDonor.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+            @Override
+            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+                donorPressed = (Donor) donorListAdapter.getItem(position);
+                if (checked) {
+                    donorsToDelete.add(donorPressed);
+                    Log.e("Checked ", ""+position);
+                } else {
+                    for (Donor donor: donorsToDelete){
+                        if (donor.getMobile().equals(donorPressed.getMobile())){
+                            donorsToDelete.remove(donor);
+                            break;
+                        }
+                    }
+                    Log.e("Removed ", ""+position);
+                }
+            }
+
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                MenuInflater inflater = mode.getMenuInflater();
+                inflater.inflate(R.menu.cab_menu, menu);
+                return true;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_delete:
+                        Helper.showToast(getBaseContext(),"Deleted !!!"+donorsToDelete.size());
+                        break;
+                }
+                return true;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+                donorsToDelete.clear();
+
+            }
+        });
 
     }
+
 
     @Override
     protected void onResume() {

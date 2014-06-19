@@ -15,11 +15,15 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
 import com.appsomehow.badhan.helper.ActionBarHelper;
 import com.appsomehow.badhan.helper.DbManager;
 import com.appsomehow.badhan.helper.DialogHelper;
 import com.appsomehow.badhan.helper.DonorInfoValidation;
+import com.appsomehow.badhan.helper.Helper;
 import com.appsomehow.badhan.model.Donor;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -61,7 +65,7 @@ public class AddNewDonorActivity extends Activity {
 
 
     private void setDefaultInfo() {
-        etNoOfDonation.setText(""+0);
+        etNoOfDonation.setText("" + 0);
     }
 
     private void setupButton(Button btn) {
@@ -81,12 +85,13 @@ public class AddNewDonorActivity extends Activity {
                     e.printStackTrace();
                 }
                 String donationFrequency = etNoOfDonation.getText().toString();
-                if( donationFrequency!= null && !donationFrequency.isEmpty()){
-                donor.setNoOfDonation(Integer.parseInt(donationFrequency));
+                if (donationFrequency != null && !donationFrequency.isEmpty()) {
+                    donor.setNoOfDonation(Integer.parseInt(donationFrequency));
                 }
                 if (DonorInfoValidation.isAllInformationFilled(donor)) {
-                        createNewDonor(donor);
-                        finish();
+                    createNewDonor(donor);
+                    Helper.showToast(getBaseContext(),"Added Successfully");
+                    finish();
 
                 } else {
                     DialogHelper.openDialog(AddNewDonorActivity.this, "Error", "Please Fill Up all with valid Data !");
@@ -110,7 +115,7 @@ public class AddNewDonorActivity extends Activity {
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
-        etLastDonationDate.setText("" + day + "/" + (month+1) + "/" + (year));
+        etLastDonationDate.setText("" + day + "/" + (month + 1) + "/" + (year));
     }
 
     public void addListenerOnDateField() {

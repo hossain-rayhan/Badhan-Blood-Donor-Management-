@@ -33,6 +33,7 @@ public class AvailableDonorListAdapter extends ArrayAdapter<Donor> {
         TextView lastDonationDate;
         TextView noOfDonation;
         ImageButton btnCallDonor;
+        ImageButton btnSmsDonor;
 
     }
 
@@ -70,6 +71,7 @@ public class AvailableDonorListAdapter extends ArrayAdapter<Donor> {
             holder.noOfDonation = (TextView) convertView
                     .findViewById(R.id.tv_no_of_donation);
             holder.btnCallDonor = (ImageButton) convertView.findViewById(R.id.btn_call_donor);
+            holder.btnSmsDonor = (ImageButton) convertView.findViewById(R.id.btn_sms_donor);
 
             convertView.setTag(holder);
         } else
@@ -89,6 +91,17 @@ public class AvailableDonorListAdapter extends ArrayAdapter<Donor> {
                 Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(Uri.parse("tel:" + finalHolder.mobile.getText().toString()));
                 context.startActivity(intent);
+            }
+        });
+
+        holder.btnSmsDonor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+                sendIntent.putExtra("address", finalHolder.mobile.getText().toString());
+                sendIntent.putExtra("sms_body", "Can U please donate blood.. Urgent !!");
+                sendIntent.setType("vnd.android-dir/mms-sms");
+                context.startActivity(sendIntent);
             }
         });
 

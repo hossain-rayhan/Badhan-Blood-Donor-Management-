@@ -1,50 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="@drawable/list_item_selector"
+    android:descendantFocusability="blocksDescendants">
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_5"
         android:paddingLeft="@dimen/dp_10"
         android:textSize="@dimen/text_size_20"
-        android:textStyle="bold|italic" />
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/tv_mobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_name"
-        android:paddingLeft="@dimen/dp_10" />
-
-    <TextView
-        android:id="@+id/last_donation_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_mobile"
         android:paddingLeft="@dimen/dp_10"
-        android:layout_marginBottom="@dimen/dp_5"
-        android:text="@string/last_donation_date"
-        android:textStyle="bold" />
+        android:textStyle="italic"/>
 
-    <TextView
-        android:id="@+id/tv_last_donation_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/tv_blood_group"
-        android:layout_alignTop="@id/last_donation_date"
-        android:layout_toRightOf="@id/last_donation_date" />
 
     <TextView
         android:id="@+id/blood_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_last_donation_date"
+        android:layout_below="@id/tv_mobile"
         android:paddingLeft="@dimen/dp_10"
-        android:text="@string/blood_group"
-        android:textStyle="bold" />
+        android:text="@string/blood_group" />
 
     <TextView
         android:id="@+id/tv_blood_group"
@@ -60,10 +45,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/blood_group"
-        android:paddingLeft="@dimen/dp_10"
         android:layout_marginBottom="@dimen/dp_5"
-        android:text="@string/no_of_donation"
-        android:textStyle="bold" />
+        android:paddingLeft="@dimen/dp_10"
+        android:text="@string/no_of_donation" />
 
     <TextView
         android:id="@+id/tv_no_of_donation"
@@ -73,44 +57,90 @@
         android:layout_alignTop="@id/no_of_donation"
         android:layout_toRightOf="@id/no_of_donation" />
 
+    <TextView
+        android:id="@+id/last_donation_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_no_of_donation"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:paddingLeft="@dimen/dp_10"
+        android:text="@string/last_donation_date" />
+
+    <TextView
+        android:id="@+id/tv_last_donation_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_blood_group"
+        android:layout_alignTop="@id/last_donation_date"
+        android:layout_toRightOf="@id/last_donation_date" />
+
+
     <ImageButton
         android:id="@+id/btn_update_donor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/tv_no_of_donation"
+        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:src="@drawable/icon_edit"
+        android:background="@drawable/btn_edit_selector"
+        android:paddingBottom="@dimen/dp_5"
         android:paddingLeft="@dimen/dp_8"
         android:paddingRight="@dimen/dp_8"
         android:paddingTop="@dimen/dp_5"
-        android:paddingBottom="@dimen/dp_5"
-        android:background="@null"/>
+        android:src="@drawable/icon_edit"
+        android:contentDescription="@string/update"/>
+
+
+    <View
+        android:id="@+id/div_1"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btn_update_donor"
+        android:layout_alignTop="@+id/btn_update_donor"
+        android:layout_marginLeft="@dimen/dp_2"
+        android:layout_marginRight="@dimen/dp_2"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/btn_update_donor"
+        android:background="@color/light" />
 
     <ImageButton
         android:id="@+id/btn_sms_donor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/tv_no_of_donation"
-        android:layout_toLeftOf="@id/btn_update_donor"
-        android:src="@drawable/icon_mail"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/div_1"
+        android:background="@drawable/btn_mail_selector"
+        android:paddingBottom="@dimen/dp_5"
         android:paddingLeft="@dimen/dp_8"
         android:paddingRight="@dimen/dp_8"
         android:paddingTop="@dimen/dp_5"
-        android:paddingBottom="@dimen/dp_5"
-        android:background="@null"/>
+        android:src="@drawable/icon_mail"
+        android:contentDescription="@string/sms"/>
+
+    <View
+        android:id="@+id/div_2"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btn_update_donor"
+        android:layout_alignTop="@+id/btn_update_donor"
+        android:layout_marginLeft="@dimen/dp_2"
+        android:layout_marginRight="@dimen/dp_2"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/btn_sms_donor"
+        android:background="@color/light" />
 
     <ImageButton
         android:id="@+id/btn_call_donor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/tv_no_of_donation"
-        android:layout_toLeftOf="@id/btn_sms_donor"
-        android:src="@drawable/icon_call"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/div_2"
+        android:background="@drawable/btn_call_selector"
+        android:paddingBottom="@dimen/dp_5"
         android:paddingLeft="@dimen/dp_8"
         android:paddingRight="@dimen/dp_8"
         android:paddingTop="@dimen/dp_5"
-        android:paddingBottom="@dimen/dp_5"
-        android:background="@null"/>
-
+        android:src="@drawable/icon_call"
+        android:contentDescription="@string/call"
+        />
 
 </RelativeLayout>

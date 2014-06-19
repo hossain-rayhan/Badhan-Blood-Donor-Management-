@@ -145,6 +145,7 @@ public class DonorUpdateActivity extends Activity {
                 }
                 if (DonorInfoValidation.isAllInformationFilled(donor)) {
                     updateDonor(donor);
+                    Helper.showToast(getBaseContext(),"Updated Successfully");
                     finish();
                 } else {
                     DialogHelper.openDialog(DonorUpdateActivity.this, "Error", "Please Fill Up all with valid Data !");
