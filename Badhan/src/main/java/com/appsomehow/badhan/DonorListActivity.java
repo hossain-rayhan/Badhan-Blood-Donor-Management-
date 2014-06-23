@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.view.View.OnClickListener;
 import com.appsomehow.badhan.adapter.DonorListAdapter;
@@ -21,7 +22,6 @@ import com.appsomehow.badhan.helper.ActionBarHelper;
 import com.appsomehow.badhan.helper.DbManager;
 import com.appsomehow.badhan.helper.Helper;
 import com.appsomehow.badhan.model.Donor;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,9 +32,9 @@ public class DonorListActivity extends Activity {
     private EditText inputSearch;
     private ListView lvDonor;
     private int textLength = 0;
-    private List<Donor> donorList, searchedDonorList,donorsToDelete;
+    private List<Donor> donorList, searchedDonorList, donorsToDelete;
     Donor donorPressed;
-    private Button cancelSearch;
+    private ImageButton cancelSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +45,12 @@ public class DonorListActivity extends Activity {
 
         lvDonor = (ListView) findViewById(R.id.lv_donor);
         inputSearch = (EditText) findViewById(R.id.input_search);
-        cancelSearch = (Button) findViewById(R.id.btn_cancel_search);
+        cancelSearch = (ImageButton) findViewById(R.id.btn_cancel_search);
 
         searchedDonorList = DbManager.getInstance().getAllDonors();
         donorList = DbManager.getInstance().getAllDonors();
         donorsToDelete = new ArrayList<Donor>();
-
+/*
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
@@ -79,8 +79,7 @@ public class DonorListActivity extends Activity {
                         }
                     }
                 }
-
-
+                lvDonor.setAdapter(new DonorListAdapter(DonorListActivity.this, R.layout.donor_list_item, searchedDonorList));
             }
 
 
@@ -99,11 +98,10 @@ public class DonorListActivity extends Activity {
             @Override
             public void onClick(View view) {
                 inputSearch.setText("");
-                lvDonor.setAdapter(donorListAdapter);
+                populateListAdapter();
             }
-        });
+        });*/
 
-        lvDonor.setAdapter(new DonorListAdapter(DonorListActivity.this, R.layout.donor_list_item, searchedDonorList));
         lvDonor.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
         lvDonor.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
@@ -111,15 +109,8 @@ public class DonorListActivity extends Activity {
                 donorPressed = (Donor) donorListAdapter.getItem(position);
                 if (checked) {
                     donorsToDelete.add(donorPressed);
-                    Log.e("Checked ", ""+position);
                 } else {
-                    for (Donor donor: donorsToDelete){
-                        if (donor.getMobile().equals(donorPressed.getMobile())){
-                            donorsToDelete.remove(donor);
-                            break;
-                        }
-                    }
-                    Log.e("Removed ", ""+position);
+                    donorsToDelete.remove(donorPressed);
                 }
             }
 
@@ -132,14 +123,19 @@ public class DonorListActivity extends Activity {
 
             @Override
             public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                return false;
+                donorListAdapter.setCabActivated(true);
+                return true;
             }
 
             @Override
             public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_delete:
-                        Helper.showToast(getBaseContext(),"Deleted !!!"+donorsToDelete.size());
+                        DbManager.getInstance().deleteDonor(donorsToDelete);
+                        populateListAdapter();
+                        donorListAdapter.setCabActivated(true);
+                        Helper.showToast(getBaseContext(), "" + donorsToDelete.size() + " item Deleted !!!");
+                        donorsToDelete.clear();
                         break;
                 }
                 return true;
@@ -147,8 +143,8 @@ public class DonorListActivity extends Activity {
 
             @Override
             public void onDestroyActionMode(ActionMode mode) {
+                donorListAdapter.setCabActivated(false);
                 donorsToDelete.clear();
-
             }
         });
 
@@ -159,12 +155,13 @@ public class DonorListActivity extends Activity {
     protected void onResume() {
         super.onResume();
         populateListAdapter();
-        donorListAdapter.notifyDataSetChanged();
-
+        inputSearch.setText("");
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
+        Log.e("On Config Change: ", "Called");
+        ActionBarHelper.changeActionBarStyle(this);
         super.onConfigurationChanged(newConfig);
     }
 

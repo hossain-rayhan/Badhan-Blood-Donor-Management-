@@ -8,22 +8,23 @@
     <RelativeLayout
         android:id="@+id/top"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/dp_30"
+        android:layout_marginTop="1dp"
         android:background="@drawable/search_input1" >
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_cancel_search"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="2dp"
             android:background="@drawable/cancel_search_button_image_selector" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_search_icon"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="2dp"
@@ -32,7 +33,7 @@
         <EditText
             android:id="@+id/input_search"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/btn_cancel_search"
             android:layout_toRightOf="@id/btn_search_icon"

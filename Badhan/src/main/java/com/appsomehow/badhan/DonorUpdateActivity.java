@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.appsomehow.badhan.helper.ActionBarHelper;
 import com.appsomehow.badhan.helper.Constant;
 import com.appsomehow.badhan.helper.DateFormatter;
@@ -23,7 +22,6 @@ import com.appsomehow.badhan.helper.DialogHelper;
 import com.appsomehow.badhan.helper.DonorInfoValidation;
 import com.appsomehow.badhan.helper.Helper;
 import com.appsomehow.badhan.model.Donor;
-
 import java.text.ParseException;
 import java.util.Calendar;
 
@@ -146,6 +144,7 @@ public class DonorUpdateActivity extends Activity {
                 if (DonorInfoValidation.isAllInformationFilled(donor)) {
                     updateDonor(donor);
                     Helper.showToast(getBaseContext(),"Updated Successfully");
+                    Helper.isEditAllChecked = false;
                     finish();
                 } else {
                     DialogHelper.openDialog(DonorUpdateActivity.this, "Error", "Please Fill Up all with valid Data !");

@@ -19,6 +19,7 @@ import java.util.List;
 public class DonorListAdapter extends ArrayAdapter<Donor> {
     Context context;
     int layoutResourceId;
+    private boolean isCabActivated = false;
 
     public DonorListAdapter(Context context, int layout, List<Donor> donors) {
         super(context, layout, donors);
@@ -74,7 +75,7 @@ public class DonorListAdapter extends ArrayAdapter<Donor> {
             holder.btnUpdateDonor = (ImageButton) convertView.findViewById(R.id.btn_update_donor);
             holder.btnSmsDonor = (ImageButton) convertView.findViewById(R.id.btn_sms_donor);
             convertView.setTag(holder);
-        } else{
+        } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
@@ -87,6 +88,15 @@ public class DonorListAdapter extends ArrayAdapter<Donor> {
 
         final ViewHolder finalHolder = holder;
 
+        if (isCabActivated) {
+            holder.btnCallDonor.setEnabled(false);
+            holder.btnSmsDonor.setEnabled(false);
+            holder.btnUpdateDonor.setEnabled(false);
+        } else {
+            holder.btnCallDonor.setEnabled(true);
+            holder.btnSmsDonor.setEnabled(true);
+            holder.btnUpdateDonor.setEnabled(true);
+        }
         holder.btnCallDonor.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -118,5 +128,9 @@ public class DonorListAdapter extends ArrayAdapter<Donor> {
         });
 
         return convertView;
+    }
+
+    public void setCabActivated(boolean isCabActivated) {
+        this.isCabActivated = isCabActivated;
     }
 }

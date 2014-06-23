@@ -38,7 +38,7 @@
             android:paddingLeft="@dimen/dp_50"
             android:layout_toRightOf="@id/tv_blood_group"
             android:background="@drawable/edit_text"
-            android:entries="@array/blood_groups" />
+            android:entries="@array/blood_groups"/>
     </RelativeLayout>
 
 
