@@ -1,6 +1,5 @@
 package com.appsomehow.badhan;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -14,7 +13,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import com.appsomehow.badhan.helper.ActionBarHelper;
 import com.appsomehow.badhan.helper.BaseActionBarActivity;
 import com.appsomehow.badhan.helper.Constant;
 import com.appsomehow.badhan.helper.DateFormatter;
@@ -40,7 +38,7 @@ public class DonorUpdateActivity extends BaseActionBarActivity {
     private int year;
     private int month;
     private int day;
-    private LinearLayout llName, llBloogGroup;
+    private LinearLayout llName, llBloodGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +54,7 @@ public class DonorUpdateActivity extends BaseActionBarActivity {
         btnUpdate = (Button) findViewById(R.id.btn_update);
         checkBoxEditAll = (CheckBox) findViewById(R.id.cb_edit_all);
         llName = (LinearLayout) findViewById(R.id.tupple_name);
-        llBloogGroup = (LinearLayout) findViewById(R.id.tupple_blood_group);
+        llBloodGroup = (LinearLayout) findViewById(R.id.tupple_blood_group);
 
         setUpDonorCurrentInformation();
         setCurrentDateOnDatePicker();
@@ -65,7 +63,7 @@ public class DonorUpdateActivity extends BaseActionBarActivity {
 
         if (Helper.isEditAllChecked) {
             llName.setVisibility(View.VISIBLE);
-            llBloogGroup.setVisibility(View.VISIBLE);
+            llBloodGroup.setVisibility(View.VISIBLE);
         }
         setupButton(btnUpdate);
     }
@@ -77,11 +75,11 @@ public class DonorUpdateActivity extends BaseActionBarActivity {
                 if (checkBoxEditAll.isChecked()) {
                     Helper.isEditAllChecked = true;
                     llName.setVisibility(View.VISIBLE);
-                    llBloogGroup.setVisibility(View.VISIBLE);
+                    llBloodGroup.setVisibility(View.VISIBLE);
                 } else {
                     Helper.isEditAllChecked = false;
                     llName.setVisibility(View.GONE);
-                    llBloogGroup.setVisibility(View.GONE);
+                    llBloodGroup.setVisibility(View.GONE);
                 }
             }
         });

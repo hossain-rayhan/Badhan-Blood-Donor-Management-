@@ -1,18 +1,24 @@
 package com.appsomehow.badhan;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.InputType;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import com.appsomehow.badhan.helper.ActionBarHelper;
 import com.appsomehow.badhan.helper.BaseActionBarActivity;
+import com.appsomehow.badhan.helper.Constant;
 import com.appsomehow.badhan.helper.DbManager;
 import com.appsomehow.badhan.helper.DialogHelper;
 import com.appsomehow.badhan.helper.DonorInfoValidation;
@@ -29,7 +35,7 @@ public class AddNewDonorActivity extends BaseActionBarActivity {
 
     public EditText etMobile;
     public EditText etName;
-    public Spinner spBloogGroup;
+    public Spinner spBloodGroup;
     public EditText etLastDonationDate;
     public EditText etNoOfDonation;
     public Button btnAdd;
@@ -44,7 +50,7 @@ public class AddNewDonorActivity extends BaseActionBarActivity {
 
         etMobile = (EditText) findViewById(R.id.et_mobile);
         etName = (EditText) findViewById(R.id.et_name);
-        spBloogGroup = (Spinner) findViewById(R.id.sp_blood_group);
+        spBloodGroup = (Spinner) findViewById(R.id.sp_blood_group);
         etLastDonationDate = (EditText) findViewById(R.id.et_last_donation_date);
         etNoOfDonation = (EditText) findViewById(R.id.et_no_of_donation);
         etLastDonationDate.setInputType(InputType.TYPE_NULL);
@@ -56,20 +62,42 @@ public class AddNewDonorActivity extends BaseActionBarActivity {
         setupButton(btnAdd);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.donor_add_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_import_contact:
+                Intent pickContactIntent = new Intent(Intent.ACTION_PICK, Uri.parse("content://contacts"));
+                pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+                startActivityForResult(pickContactIntent, Constant.PICK_CONTACT_REQUEST);
+                break;
+            case android.R.id.home:
+                super.onBackPressed();
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
 
     private void setDefaultInfo() {
         etNoOfDonation.setText("" + 0);
     }
 
     private void setupButton(Button btn) {
-        final Activity activity = this;
         btn.setOnClickListener(new View.OnClickListener() {
             Donor donor = new Donor();
 
             public void onClick(View v) {
                 donor.setMobile(etMobile.getText().toString());
                 donor.setName(etName.getText().toString());
-                donor.setBloodGroup(spBloogGroup.getSelectedItem().toString());
+                donor.setBloodGroup(spBloodGroup.getSelectedItem().toString());
                 try {
                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                     Date lastDate = sdf.parse(etLastDonationDate.getText().toString());
@@ -83,7 +111,7 @@ public class AddNewDonorActivity extends BaseActionBarActivity {
                 }
                 if (DonorInfoValidation.isAllInformationFilled(donor)) {
                     createNewDonor(donor);
-                    Helper.showToast(getBaseContext(),"Added Successfully");
+                    Helper.showToast(getBaseContext(), "Added Successfully !!");
                     finish();
 
                 } else {
@@ -92,6 +120,27 @@ public class AddNewDonorActivity extends BaseActionBarActivity {
             }
 
         });
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == Constant.PICK_CONTACT_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                Uri contactUri = data.getData();
+                String[] projection = {ContactsContract.CommonDataKinds.Phone.NUMBER,ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME};
+                Cursor cursor = getContentResolver()
+                        .query(contactUri, projection, null, null, null);
+                cursor.moveToFirst();
+                int columnPhoneNumber = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                String phoneNumber = cursor.getString(columnPhoneNumber);
+                String name = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+
+                etMobile.setText(phoneNumber);
+                etName.setText(name);
+
+            }
+        }
     }
 
     @Override

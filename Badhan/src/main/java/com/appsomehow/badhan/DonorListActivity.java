@@ -101,6 +101,7 @@ public class DonorListActivity extends BaseActionBarActivity {
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 // When user changed the Text
                 donorListAdapter.getFilter().filter(cs);
+                donorsToDelete.clear();
                 textLength = inputSearch.getText().length();
                 searchedDonorList.clear();
                 donorList = DbManager.getInstance().getAllDonors();

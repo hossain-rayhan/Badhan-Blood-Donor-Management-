@@ -18,6 +18,7 @@
     <string name="sms">SMS</string>
     <string name="call">Call</string>
     <string name="available_donors">Available Donors</string>
+    <string name="import_contact">import from Conatct</string>
 
 
     <string-array name="blood_groups">
