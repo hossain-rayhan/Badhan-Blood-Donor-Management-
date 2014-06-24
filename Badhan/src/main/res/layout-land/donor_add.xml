@@ -181,8 +181,6 @@
             android:layout_marginTop="@dimen/dp_30"
             android:background="@drawable/submit_btn_image_selector"
             android:clickable="true"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/dp_10"
             android:text="@string/add_donor"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_15"

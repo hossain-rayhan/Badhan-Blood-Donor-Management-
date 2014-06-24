@@ -49,7 +49,6 @@
             android:background="@drawable/submit_btn_image_selector"
             android:clickable="true"
             android:text="@string/search"
-            android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_15"
             android:textStyle="bold" />

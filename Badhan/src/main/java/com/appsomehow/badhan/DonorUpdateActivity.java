@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.appsomehow.badhan.helper.ActionBarHelper;
+import com.appsomehow.badhan.helper.BaseActionBarActivity;
 import com.appsomehow.badhan.helper.Constant;
 import com.appsomehow.badhan.helper.DateFormatter;
 import com.appsomehow.badhan.helper.DbManager;
@@ -25,7 +26,7 @@ import com.appsomehow.badhan.model.Donor;
 import java.text.ParseException;
 import java.util.Calendar;
 
-public class DonorUpdateActivity extends Activity {
+public class DonorUpdateActivity extends BaseActionBarActivity {
 
     static final int DATE_DIALOG_ID = 999;
     private Donor donor;
@@ -45,7 +46,6 @@ public class DonorUpdateActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.donor_update);
-        ActionBarHelper.changeActionBarStyle(this);
 
         etMobile = (TextView) findViewById(R.id.et_mobile);
         etName = (EditText) findViewById(R.id.et_name);

@@ -11,11 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import com.appsomehow.badhan.helper.ActionBarHelper;
+import com.appsomehow.badhan.helper.BaseActionBarActivity;
 import com.appsomehow.badhan.helper.Constant;
 import com.appsomehow.badhan.helper.DbManager;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends BaseActionBarActivity {
 
     public Button btnSearch;
     public Spinner spBloodGroup;
@@ -24,7 +25,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DbManager.init(this);
-        ActionBarHelper.changeActionBarStyle(this);
         setContentView(R.layout.activity_main);
 
         btnSearch = (Button) findViewById(R.id.btn_search);

@@ -12,6 +12,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import com.appsomehow.badhan.helper.ActionBarHelper;
+import com.appsomehow.badhan.helper.BaseActionBarActivity;
 import com.appsomehow.badhan.helper.DbManager;
 import com.appsomehow.badhan.helper.DialogHelper;
 import com.appsomehow.badhan.helper.DonorInfoValidation;
@@ -22,7 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AddNewDonorActivity extends Activity {
+public class AddNewDonorActivity extends BaseActionBarActivity {
 
     static final int DATE_DIALOG_ID = 999;
 
@@ -40,7 +41,6 @@ public class AddNewDonorActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.donor_add);
-        ActionBarHelper.changeActionBarStyle(this);
 
         etMobile = (EditText) findViewById(R.id.et_mobile);
         etName = (EditText) findViewById(R.id.et_name);

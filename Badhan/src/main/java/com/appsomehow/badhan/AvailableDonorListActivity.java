@@ -8,6 +8,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.appsomehow.badhan.adapter.AvailableDonorListAdapter;
 import com.appsomehow.badhan.helper.ActionBarHelper;
+import com.appsomehow.badhan.helper.BaseActionBarActivity;
 import com.appsomehow.badhan.helper.Constant;
 import com.appsomehow.badhan.helper.DateFormatter;
 import com.appsomehow.badhan.helper.DbManager;
@@ -17,7 +18,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class AvailableDonorListActivity extends Activity {
+public class AvailableDonorListActivity extends BaseActionBarActivity {
     private AvailableDonorListAdapter availableDonorListAdapter;
     private ListView lvSearchedDonor;
     private TextView tvNoDonorAvailable;
@@ -26,7 +27,6 @@ public class AvailableDonorListActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActionBarHelper.changeActionBarStyle(this);
         DbManager.init(this);
         setContentView(R.layout.available_donor_list);
 

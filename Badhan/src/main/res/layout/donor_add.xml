@@ -179,7 +179,5 @@
         android:textColor="@android:color/white"
         android:textStyle="bold"
         android:textSize="@dimen/text_size_15"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/dp_10"
         android:layout_alignLeft="@id/textView"/>
 </RelativeLayout>
