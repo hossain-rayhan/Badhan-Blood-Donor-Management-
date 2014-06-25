@@ -28,7 +28,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.apptitive.ramadan.MainActivity" />
+                android:value="com.appsomehow.badhan.MainActivity" />
         </activity>
 
         <activity
@@ -40,7 +40,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.apptitive.ramadan.MainActivity" />
+                android:value="com.appsomehow.badhan.MainActivity" />
         </activity>
         <activity
             android:name="com.appsomehow.badhan.DonorUpdateActivity"
@@ -49,7 +49,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.apptitive.ramadan.DonorListActivity" />
+                android:value="com.appsomehow.badhan.DonorListActivity" />
         </activity>
         <activity
             android:name="com.appsomehow.badhan.AvailableDonorListActivity"
@@ -59,7 +59,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.apptitive.ramadan.MainActivity" />
+                android:value="com.appsomehow.badhan.MainActivity" />
         </activity>
     </application>
 

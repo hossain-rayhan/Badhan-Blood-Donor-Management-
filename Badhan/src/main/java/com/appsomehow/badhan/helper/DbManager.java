@@ -64,9 +64,9 @@ public class DbManager {
         }
     }
 
-    public void deleteDonor(List<Donor> donorsToDelete){
+    public void deleteDonor(Donor donorToDelete){
         try {
-            getHelper().getDonorDao().delete(donorsToDelete);
+            getHelper().getDonorDao().delete(donorToDelete);
         } catch (SQLException e) {
             e.printStackTrace();
         }

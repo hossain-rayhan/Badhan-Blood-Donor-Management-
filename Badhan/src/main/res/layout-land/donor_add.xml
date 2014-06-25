@@ -36,12 +36,12 @@
                 android:gravity="end"
                 android:text="@string/mobile"
                 android:textColor="@color/red"
-                android:textSize="@dimen/text_size_15" />
+                android:textSize="@dimen/text_size_18" />
 
             <EditText
                 android:id="@+id/et_mobile"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/dp_20"
+                android:layout_height="@dimen/dp_25"
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginRight="@dimen/dp_20"
@@ -66,12 +66,12 @@
                 android:gravity="end"
                 android:text="@string/name"
                 android:textColor="@color/red"
-                android:textSize="@dimen/text_size_15" />
+                android:textSize="@dimen/text_size_18" />
 
             <EditText
                 android:id="@+id/et_name"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/dp_20"
+                android:layout_height="@dimen/dp_25"
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginRight="@dimen/dp_20"
@@ -96,12 +96,12 @@
                 android:gravity="end"
                 android:text="@string/blood_group"
                 android:textColor="@color/red"
-                android:textSize="@dimen/text_size_15" />
+                android:textSize="@dimen/text_size_18" />
 
             <Spinner
                 android:id="@+id/sp_blood_group"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/dp_20"
+                android:layout_height="@dimen/dp_25"
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginRight="@dimen/dp_20"
@@ -127,12 +127,12 @@
                 android:gravity="end"
                 android:text="@string/last_donation_date"
                 android:textColor="@color/red"
-                android:textSize="@dimen/text_size_15" />
+                android:textSize="@dimen/text_size_18" />
 
             <EditText
                 android:id="@+id/et_last_donation_date"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/dp_20"
+                android:layout_height="@dimen/dp_25"
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginRight="@dimen/dp_20"
@@ -157,12 +157,12 @@
                 android:gravity="end"
                 android:text="@string/no_of_donation"
                 android:textColor="@color/red"
-                android:textSize="@dimen/text_size_15" />
+                android:textSize="@dimen/text_size_18" />
 
             <EditText
                 android:id="@+id/et_no_of_donation"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/dp_20"
+                android:layout_height="@dimen/dp_25"
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginRight="@dimen/dp_20"

@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_5"
         android:paddingLeft="@dimen/dp_10"
-        android:textSize="@dimen/text_size_18"
-        android:textStyle="italic" />
+        android:textStyle="bold|italic"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/tv_mobile"
@@ -21,7 +21,7 @@
         android:layout_below="@id/tv_name"
         android:paddingLeft="@dimen/dp_10"
         android:textStyle="italic"
-        android:textSize="@dimen/text_size_12"/>
+        android:textColor="@color/black"/>
 
 
     <TextView
@@ -31,16 +31,16 @@
         android:layout_below="@id/tv_mobile"
         android:paddingLeft="@dimen/dp_10"
         android:text="@string/blood_group"
-        android:textSize="@dimen/text_size_12"/>
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/tv_blood_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/blood_group"
-        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginLeft="@dimen/dp_25"
         android:layout_toRightOf="@id/blood_group"
-        android:textSize="@dimen/text_size_12"/>
+        android:textColor="@color/black"/>
 
 
     <TextView
@@ -51,7 +51,7 @@
         android:layout_marginBottom="@dimen/dp_5"
         android:paddingLeft="@dimen/dp_10"
         android:text="@string/no_of_donation"
-        android:textSize="@dimen/text_size_12"/>
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/tv_no_of_donation"
@@ -60,7 +60,7 @@
         android:layout_alignLeft="@id/tv_blood_group"
         android:layout_alignTop="@id/no_of_donation"
         android:layout_toRightOf="@id/no_of_donation"
-        android:textSize="@dimen/text_size_12"/>
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/last_donation_date"
@@ -70,7 +70,7 @@
         android:layout_marginBottom="@dimen/dp_5"
         android:paddingLeft="@dimen/dp_10"
         android:text="@string/last_donation_date"
-        android:textSize="@dimen/text_size_12"/>
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/tv_last_donation_date"
@@ -79,7 +79,7 @@
         android:layout_alignLeft="@id/tv_blood_group"
         android:layout_alignTop="@id/last_donation_date"
         android:layout_toRightOf="@id/last_donation_date"
-        android:textSize="@dimen/text_size_12"/>
+        android:textColor="@color/black"/>
 
 
     <ImageButton

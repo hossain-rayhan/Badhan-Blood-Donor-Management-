@@ -1,15 +1,13 @@
 package com.appsomehow.badhan;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.ActionMode;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -17,7 +15,6 @@ import android.view.View.OnClickListener;
 import com.appsomehow.badhan.adapter.DonorListAdapter;
 import com.appsomehow.badhan.helper.BaseActionBarActivity;
 import com.appsomehow.badhan.helper.DbManager;
-import com.appsomehow.badhan.helper.Helper;
 import com.appsomehow.badhan.model.Donor;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,59 +44,18 @@ public class DonorListActivity extends BaseActionBarActivity {
         donorListAdapter = new DonorListAdapter(this, R.layout.donor_list_item, donorList);
         lvDonor.setAdapter(donorListAdapter);
 
-        lvDonor.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
-        lvDonor.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+        lvDonor.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
                 donorPressed = (Donor) donorListAdapter.getItem(position);
-                if (checked) {
-                    donorsToDelete.add(donorPressed);
-                } else {
-                    donorsToDelete.remove(donorPressed);
-                }
-            }
-
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                MenuInflater inflater = mode.getMenuInflater();
-                inflater.inflate(R.menu.cab_menu, menu);
+                deleteDonorFromList(donorPressed);
                 return true;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                donorListAdapter.setCabActivated(true);
-                return true;
-            }
-
-            @Override
-            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_delete:
-                        DbManager.getInstance().deleteDonor(donorsToDelete);
-                        donorListAdapter.setCabActivated(true);
-                        Helper.showToast(getBaseContext(), "" + donorsToDelete.size() + " item Deleted !!!");
-                        donorsToDelete.clear();
-                        inputSearch.setText("");
-                        populateListAdapter();
-                        break;
-                }
-                return true;
-            }
-
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-                donorListAdapter.setCabActivated(false);
-                donorsToDelete.clear();
-                inputSearch.setText("");
-                populateListAdapter();
             }
         });
 
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
-                // When user changed the Text
                 donorListAdapter.getFilter().filter(cs);
                 donorsToDelete.clear();
                 textLength = inputSearch.getText().length();
@@ -149,6 +105,30 @@ public class DonorListActivity extends BaseActionBarActivity {
                 populateListAdapter();
             }
         });
+    }
+
+    private void deleteDonorFromList(final Donor donorToDelete) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(
+                DonorListActivity.this);
+        alert.setTitle("Delete");
+        alert.setMessage("Do you want delete donor :" + donorToDelete.getName());
+        alert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                DbManager.getInstance().deleteDonor(donorToDelete);
+                inputSearch.setText("");
+                populateListAdapter();
+            }
+
+        });
+        alert.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        alert.show();
     }
 
 

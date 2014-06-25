@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -106,7 +107,7 @@ public class AddNewDonorActivity extends BaseActionBarActivity {
                     e.printStackTrace();
                 }
                 String donationFrequency = etNoOfDonation.getText().toString();
-                if (donationFrequency != null && !donationFrequency.isEmpty()) {
+                if (donationFrequency != null && !TextUtils.isEmpty(donationFrequency)) {
                     donor.setNoOfDonation(Integer.parseInt(donationFrequency));
                 }
                 if (DonorInfoValidation.isAllInformationFilled(donor)) {
