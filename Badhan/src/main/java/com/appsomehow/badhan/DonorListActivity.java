@@ -6,15 +6,19 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
+
 import com.appsomehow.badhan.adapter.DonorListAdapter;
 import com.appsomehow.badhan.helper.BaseActionBarActivity;
 import com.appsomehow.badhan.helper.DbManager;
+import com.appsomehow.badhan.helper.Helper;
 import com.appsomehow.badhan.model.Donor;
 import java.util.ArrayList;
 import java.util.List;
@@ -118,6 +122,7 @@ public class DonorListActivity extends BaseActionBarActivity {
                 DbManager.getInstance().deleteDonor(donorToDelete);
                 inputSearch.setText("");
                 populateListAdapter();
+                Helper.showToast(getBaseContext(), "Deleted Successfully !!");
             }
 
         });
