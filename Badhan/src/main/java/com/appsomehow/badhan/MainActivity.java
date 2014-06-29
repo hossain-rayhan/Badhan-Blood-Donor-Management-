@@ -2,8 +2,10 @@ package com.appsomehow.badhan;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Region;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,14 +14,19 @@ import android.widget.Button;
 import android.widget.Spinner;
 import com.appsomehow.badhan.helper.ActionBarHelper;
 import com.appsomehow.badhan.helper.BaseActionBarActivity;
+import com.appsomehow.badhan.helper.CSVToDbHelper;
 import com.appsomehow.badhan.helper.Constant;
 import com.appsomehow.badhan.helper.DbManager;
+import com.appsomehow.badhan.helper.DbTableName;
+import com.appsomehow.badhan.helper.PreferenceHelper;
+import com.appsomehow.badhan.model.Donor;
 
 
 public class MainActivity extends BaseActionBarActivity {
 
-    public Button btnSearch;
-    public Spinner spBloodGroup;
+    private Button btnSearch;
+    private Spinner spBloodGroup;
+    private PreferenceHelper preferenceHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,13 @@ public class MainActivity extends BaseActionBarActivity {
 
         btnSearch = (Button) findViewById(R.id.btn_search);
         spBloodGroup = (Spinner) findViewById(R.id.sp_blood_group);
+        preferenceHelper = new PreferenceHelper(this);
+        Log.e("DB Created ", "1st Time Out"+!preferenceHelper.getBoolean(Constant.IS_DB_CREATED,false));
+        if (!preferenceHelper.getBoolean(Constant.IS_DB_CREATED,false)) {
+            CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.donor, DbTableName.Donor);
+            preferenceHelper.setBoolean(Constant.IS_DB_CREATED, true);
+            Log.e("DB Created ", "1st Time");
+        }
 
         addListenerToSearchButton();
     }

@@ -21,6 +21,17 @@ public class Donor {
     @DatabaseField
     private int noOfDonation;
 
+    public Donor() {
+    }
+
+    public Donor(String mobile, String name, String bloodGroup, Date lastDonationDate, int noOfDonation) {
+        this.mobile = mobile;
+        this.name = name;
+        this.bloodGroup = bloodGroup;
+        this.lastDonationDate = lastDonationDate;
+        this.noOfDonation = noOfDonation;
+    }
+
     public String getMobile() {
         return mobile;
     }
