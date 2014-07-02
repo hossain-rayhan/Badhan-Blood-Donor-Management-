@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+
 import com.appsomehow.badhan.helper.ActionBarHelper;
 import com.appsomehow.badhan.helper.BaseActionBarActivity;
 import com.appsomehow.badhan.helper.CSVToDbHelper;
@@ -37,11 +38,9 @@ public class MainActivity extends BaseActionBarActivity {
         btnSearch = (Button) findViewById(R.id.btn_search);
         spBloodGroup = (Spinner) findViewById(R.id.sp_blood_group);
         preferenceHelper = new PreferenceHelper(this);
-        Log.e("DB Created ", "1st Time Out"+!preferenceHelper.getBoolean(Constant.IS_DB_CREATED,false));
-        if (!preferenceHelper.getBoolean(Constant.IS_DB_CREATED,false)) {
+        if (!preferenceHelper.getBoolean(Constant.IS_DB_CREATED, false)) {
             CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.donor, DbTableName.Donor);
             preferenceHelper.setBoolean(Constant.IS_DB_CREATED, true);
-            Log.e("DB Created ", "1st Time");
         }
 
         addListenerToSearchButton();
