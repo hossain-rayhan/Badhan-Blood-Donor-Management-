@@ -14,16 +14,40 @@
         revision="19.1.0"
         sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5"/>
     <item
-        dex="E:\Android\Git\BadhanBloodDonorManagement\Badhan\build\intermediates\pre-dexed\debug\support-v4-19.1.0-73b9883bfda7e9a6ae205d0e99c174e73ba72aaa.jar"
-        jar="D:\Android\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        dex="E:\Android\Git\BadhanBloodDonorManagement\Badhan\build\intermediates\pre-dexed\debug\ormlite-core-4.48-8e6d7a213da92680cf70bd036d4a6d339b5251a1.jar"
+        jar="E:\Android\Git\BadhanBloodDonorManagement\Badhan\libs\ormlite-core-4.48.jar"
         jumboMode="false"
-        revision="19.1.0"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+        revision="20.0.0"
+        sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5"/>
     <item
-        dex="E:\Android\Git\BadhanBloodDonorManagement\Badhan\build\intermediates\pre-dexed\debug\classes-66c3281645e20af181d8ca7c373a2a6277e0545a.jar"
-        jar="E:\Android\Git\BadhanBloodDonorManagement\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
+        dex="E:\Android\Git\BadhanBloodDonorManagement\Badhan\build\intermediates\pre-dexed\debug\ormlite-android-4.48-4640ce41a81562ee4ddb83f2693bb9eb50479396.jar"
+        jar="E:\Android\Git\BadhanBloodDonorManagement\Badhan\libs\ormlite-android-4.48.jar"
         jumboMode="false"
-        revision="19.1.0"
-        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
+        revision="20.0.0"
+        sha1="9e45246f4a068cad94e03f34bf8f24358279a7f7"/>
+    <item
+        dex="E:\Android\Git\BadhanBloodDonorManagement\Badhan\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-b26caeda937769c9ba7e545095aafa6d0bff7e1a.jar"
+        jar="D:\Android\adt-bundle-windows-x86_64-20140321\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+    <item
+        dex="E:\Android\Git\BadhanBloodDonorManagement\Badhan\build\intermediates\pre-dexed\debug\classes-b5c4fe0902e03ee84e49e01c3b4e6cc2c05f2419.jar"
+        jar="E:\Android\Git\BadhanBloodDonorManagement\Badhan\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+    <item
+        dex="E:\Android\Git\BadhanBloodDonorManagement\Badhan\build\intermediates\pre-dexed\debug\classes-5ae7882f37587853a6b28662135c13d2b2a3f113.jar"
+        jar="E:\Android\Git\BadhanBloodDonorManagement\Badhan\build\intermediates\exploded-aar\com.android.support\appcompat-v7\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef"/>
+    <item
+        dex="E:\Android\Git\BadhanBloodDonorManagement\Badhan\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-b8528e59f763a56130a6db94b3f40211cc766e19.jar"
+        jar="E:\Android\Git\BadhanBloodDonorManagement\Badhan\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
 
 </pre-dex-items>
