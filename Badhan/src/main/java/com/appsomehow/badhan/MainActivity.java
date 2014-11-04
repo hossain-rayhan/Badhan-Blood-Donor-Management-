@@ -21,6 +21,7 @@ import com.appsomehow.badhan.helper.DbManager;
 import com.appsomehow.badhan.helper.DbTableName;
 import com.appsomehow.badhan.helper.PreferenceHelper;
 import com.appsomehow.badhan.model.Donor;
+import com.j256.ormlite.table.TableUtils;
 
 import java.util.List;
 
@@ -40,15 +41,13 @@ public class MainActivity extends BaseActionBarActivity {
         btnSearch = (Button) findViewById(R.id.btn_search);
         spBloodGroup = (Spinner) findViewById(R.id.sp_blood_group);
         preferenceHelper = new PreferenceHelper(this);
+
         if (!preferenceHelper.getBoolean(Constant.IS_DB_CREATED, false)) {
             CSVToDbHelper.readCSVAndInserIntoDb(this, R.raw.donor, DbTableName.Donor);
             preferenceHelper.setBoolean(Constant.IS_DB_CREATED, true);
+            Log.e("Db Created","1st time");
         }
 
-        /*List<Donor> dList = DbManager.getInstance().getAllDonors();
-        for (Donor d : dList){
-            Log.e("key",""+d.getId());
-        }*/
         addListenerToSearchButton();
     }
 

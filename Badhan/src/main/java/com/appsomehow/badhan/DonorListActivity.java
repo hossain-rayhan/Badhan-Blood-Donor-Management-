@@ -51,7 +51,7 @@ public class DonorListActivity extends BaseActionBarActivity {
         lvDonor.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
-                donorPressed = (Donor) donorListAdapter.getItem(position);
+                donorPressed = donorListAdapter.getItem(position);
                 deleteDonorFromList(donorPressed);
                 return true;
             }

@@ -16,7 +16,7 @@ import java.util.List;
 public class DbHelper extends OrmLiteSqliteOpenHelper {
 
     private static final String DATABASE_NAME = "DonorDb.sqlite";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private Context context;
 
     private Dao<Donor, Integer> donorDao = null;
@@ -43,11 +43,12 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         List<String> allSql = new ArrayList<String>();
         try {
-            /*TableUtils.clearTable(connectionSource, Donor.class);
+            TableUtils.dropTable(connectionSource, Donor.class,true);
+            TableUtils.createTable(connectionSource, Donor.class);
             CSVToDbHelper.readCSVAndInserIntoDb(context, R.raw.donor, DbTableName.Donor);
             for (String sql : allSql) {
                 sqLiteDatabase.execSQL(sql);
-            }*/
+            }
         } catch (Exception e) {
             Log.e(DbHelper.class.getName(), "exception during onUpgrade", e);
             throw new RuntimeException(e);
@@ -64,4 +65,5 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
         }
         return donorDao;
     }
+
 }

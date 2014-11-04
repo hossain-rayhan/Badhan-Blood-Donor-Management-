@@ -59,7 +59,7 @@ public class AvailableDonorListAdapter extends ArrayAdapter<Donor> {
         View inflatedView = LayoutInflater.from(context).inflate(
                 layoutResourceId, parent, false);
 
-        ViewHolder holder = null;
+        ViewHolder holder;
         if (convertView == null) {
 
             convertView = inflatedView;
