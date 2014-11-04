@@ -33,6 +33,9 @@ public class DonorListAdapter extends ArrayAdapter<Donor> {
         TextView bloodGroup;
         TextView lastDonationDate;
         TextView noOfDonation;
+        TextView address;
+        TextView preferredArea;
+        TextView comment;
         ImageButton btnCallDonor;
         ImageButton btnSmsDonor;
         ImageButton btnUpdateDonor;
@@ -52,7 +55,8 @@ public class DonorListAdapter extends ArrayAdapter<Donor> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Donor donor = getItem(position);
+        final Donor donor = getItem(position);
+        final int donorId = donor.getId();
 
         View inflatedView = LayoutInflater.from(context).inflate(
                 layoutResourceId, parent, false);
@@ -71,6 +75,9 @@ public class DonorListAdapter extends ArrayAdapter<Donor> {
             holder.lastDonationDate = (TextView) convertView.findViewById(R.id.tv_last_donation_date);
             holder.noOfDonation = (TextView) convertView
                     .findViewById(R.id.tv_no_of_donation);
+            holder.address = (TextView)convertView.findViewById(R.id.tv_address);
+            holder.preferredArea = (TextView)convertView.findViewById(R.id.tv_preferred_area);
+            holder.comment = (TextView)convertView.findViewById(R.id.tv_comment);
             holder.btnCallDonor = (ImageButton) convertView.findViewById(R.id.btn_call_donor);
             holder.btnUpdateDonor = (ImageButton) convertView.findViewById(R.id.btn_update_donor);
             holder.btnSmsDonor = (ImageButton) convertView.findViewById(R.id.btn_sms_donor);
@@ -84,7 +91,9 @@ public class DonorListAdapter extends ArrayAdapter<Donor> {
         holder.bloodGroup.setText(donor.getBloodGroup());
         holder.lastDonationDate.setText(DateFormatter.getStringFromDate(donor.getLastDonationDate()));
         holder.noOfDonation.setText("" + donor.getNoOfDonation());
-
+        holder.address.setText(donor.getAddress());
+        holder.preferredArea.setText(donor.getPreferredArea());
+        holder.comment.setText(donor.getComment());
 
         final ViewHolder finalHolder = holder;
 
@@ -122,7 +131,7 @@ public class DonorListAdapter extends ArrayAdapter<Donor> {
             @Override
             public void onClick(View v) {
                 Intent donorUpdate = new Intent(context, DonorUpdateActivity.class);
-                donorUpdate.putExtra(Constant.keyDonorMobile, finalHolder.mobile.getText().toString());
+                donorUpdate.putExtra(Constant.keyDonor, donorId);
                 context.startActivity(donorUpdate);
             }
         });
@@ -130,7 +139,4 @@ public class DonorListAdapter extends ArrayAdapter<Donor> {
         return convertView;
     }
 
-    public void setCabActivated(boolean isCabActivated) {
-        this.isCabActivated = isCabActivated;
-    }
 }

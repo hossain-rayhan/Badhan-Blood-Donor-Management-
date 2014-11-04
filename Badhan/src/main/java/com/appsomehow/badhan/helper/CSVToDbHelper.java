@@ -24,8 +24,8 @@ public class CSVToDbHelper {
             while ((readLine = br.readLine()) != null) {
                 String[] result = readLine.split(",");
                 if (dbTableName.equals(DbTableName.Donor)) {
-                    Date donationDate = sdf.parse(result[3]);
-                    donor = new Donor(result[0], result[1], result[2], donationDate, Integer.parseInt(result[4]));
+                    Date donationDate = sdf.parse(result[4]);
+                    donor = new Donor(0, result[1], result[2],result[3], donationDate, Integer.parseInt(result[5]),result[6],result[7],result[8]);
                     DbManager.getInstance().addDonor(donor);
                 }
             }

@@ -32,6 +32,9 @@ public class AvailableDonorListAdapter extends ArrayAdapter<Donor> {
         TextView bloodGroup;
         TextView lastDonationDate;
         TextView noOfDonation;
+        TextView address;
+        TextView preferredArea;
+        TextView comment;
         ImageButton btnCallDonor;
         ImageButton btnSmsDonor;
 
@@ -70,6 +73,9 @@ public class AvailableDonorListAdapter extends ArrayAdapter<Donor> {
             holder.lastDonationDate = (TextView) convertView.findViewById(R.id.tv_last_donation_date);
             holder.noOfDonation = (TextView) convertView
                     .findViewById(R.id.tv_no_of_donation);
+            holder.address = (TextView)convertView.findViewById(R.id.tv_address);
+            holder.preferredArea = (TextView)convertView.findViewById(R.id.tv_preferred_area);
+            holder.comment = (TextView)convertView.findViewById(R.id.tv_comment);
             holder.btnCallDonor = (ImageButton) convertView.findViewById(R.id.btn_call_donor);
             holder.btnSmsDonor = (ImageButton) convertView.findViewById(R.id.btn_sms_donor);
 
@@ -82,6 +88,9 @@ public class AvailableDonorListAdapter extends ArrayAdapter<Donor> {
         holder.bloodGroup.setText(donor.getBloodGroup());
         holder.lastDonationDate.setText(DateFormatter.getStringFromDate(donor.getLastDonationDate()));
         holder.noOfDonation.setText("" + donor.getNoOfDonation());
+        holder.address.setText(donor.getAddress());
+        holder.preferredArea.setText(donor.getPreferredArea());
+        holder.comment.setText(donor.getComment());
 
         final ViewHolder finalHolder = holder;
         holder.btnCallDonor.setOnClickListener(new View.OnClickListener() {

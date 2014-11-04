@@ -24,6 +24,7 @@ import com.appsomehow.badhan.helper.DbManager;
 import com.appsomehow.badhan.helper.DialogHelper;
 import com.appsomehow.badhan.helper.DonorInfoValidation;
 import com.appsomehow.badhan.helper.Helper;
+import com.appsomehow.badhan.helper.PreferenceHelper;
 import com.appsomehow.badhan.model.Donor;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,11 +35,8 @@ public class AddNewDonorActivity extends BaseActionBarActivity {
 
     static final int DATE_DIALOG_ID = 999;
 
-    public EditText etMobile;
-    public EditText etName;
+    public EditText etMobile,etName,etLastDonationDate,etNoOfDonation,etAddress,etPreferredArea,etComment;
     public Spinner spBloodGroup;
-    public EditText etLastDonationDate;
-    public EditText etNoOfDonation;
     public Button btnAdd;
     private int year;
     private int month;
@@ -55,6 +53,10 @@ public class AddNewDonorActivity extends BaseActionBarActivity {
         etLastDonationDate = (EditText) findViewById(R.id.et_last_donation_date);
         etNoOfDonation = (EditText) findViewById(R.id.et_no_of_donation);
         etLastDonationDate.setInputType(InputType.TYPE_NULL);
+        etAddress = (EditText)findViewById(R.id.et_address);
+        etPreferredArea = (EditText)findViewById(R.id.et_preferred_area);
+        etComment = (EditText)findViewById(R.id.et_comment);
+
         setDefaultInfo();
         setCurrentDateOnDatePicker();
         addListenerOnDateField();
@@ -110,13 +112,17 @@ public class AddNewDonorActivity extends BaseActionBarActivity {
                 if (donationFrequency != null && !TextUtils.isEmpty(donationFrequency)) {
                     donor.setNoOfDonation(Integer.parseInt(donationFrequency));
                 }
+                donor.setAddress(etAddress.getText().toString());
+                donor.setPreferredArea(etPreferredArea.getText().toString());
+                donor.setComment(etComment.getText().toString());
+
                 if (DonorInfoValidation.isAllInformationFilled(donor)) {
                     createNewDonor(donor);
                     Helper.showToast(getBaseContext(), "Added Successfully !!");
                     finish();
 
                 } else {
-                    DialogHelper.openDialog(AddNewDonorActivity.this, "Error", "Please Fill Up all with valid Data !");
+                    DialogHelper.openDialog(AddNewDonorActivity.this, "Error", "Please fill up mandatory field with valid Data !");
                 }
             }
 

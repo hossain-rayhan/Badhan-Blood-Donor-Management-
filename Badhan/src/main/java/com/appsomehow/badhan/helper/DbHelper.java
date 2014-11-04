@@ -19,7 +19,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private Context context;
 
-    private Dao<Donor, String> donorDao = null;
+    private Dao<Donor, Integer> donorDao = null;
 
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -43,18 +43,18 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         List<String> allSql = new ArrayList<String>();
         try {
-            TableUtils.clearTable(connectionSource, Donor.class);
+            /*TableUtils.clearTable(connectionSource, Donor.class);
             CSVToDbHelper.readCSVAndInserIntoDb(context, R.raw.donor, DbTableName.Donor);
             for (String sql : allSql) {
                 sqLiteDatabase.execSQL(sql);
-            }
+            }*/
         } catch (Exception e) {
             Log.e(DbHelper.class.getName(), "exception during onUpgrade", e);
             throw new RuntimeException(e);
         }
     }
 
-    public Dao<Donor, String> getDonorDao() {
+    public Dao<Donor, Integer> getDonorDao() {
         if (null == donorDao) {
             try {
                 donorDao = getDao(Donor.class);

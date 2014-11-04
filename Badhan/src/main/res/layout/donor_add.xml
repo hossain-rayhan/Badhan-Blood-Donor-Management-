@@ -1,183 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/bg"
-    android:gravity="center_vertical">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/dp_ng_60"
-        android:text="@string/add_new_donor"
-        android:textColor="@color/red"
-        android:textSize="@dimen/text_size_25"
-        android:textStyle="bold|italic" />
-
-    <LinearLayout
-        android:id="@+id/tupple_mobile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dp_10">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:paddingBottom="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_20">
 
         <TextView
-            android:id="@+id/tv_mobile"
-            android:layout_width="0dp"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text="@string/mobile"
+            android:layout_centerHorizontal="true"
+            android:text="@string/add_new_donor"
             android:textColor="@color/red"
-            android:textSize="@dimen/text_size_18" />
+            android:textSize="@dimen/text_size_25"
+            android:textStyle="bold|italic" />
 
-        <EditText
-            android:id="@+id/et_mobile"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/dp_25"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:layout_marginRight="@dimen/dp_20"
-            android:layout_weight="1"
-            android:layout_gravity="bottom"
-            android:inputType="phone"
-            android:background="@color/light" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/tupple_name"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tupple_mobile"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dp_10">
-
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/tupple_mobile"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text="@string/name"
-            android:textColor="@color/red"
-            android:textSize="@dimen/text_size_18" />
+            android:layout_below="@id/textView"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/et_name"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/dp_25"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:layout_marginRight="@dimen/dp_20"
-            android:layout_weight="1"
-            android:layout_gravity="bottom"
-            android:background="@color/light"
-            android:inputType="text" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/tupple_blood_group"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tupple_name"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dp_10">
+            <TextView
+                android:id="@+id/tv_mobile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/mobile"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_18" />
 
-        <TextView
-            android:id="@+id/tv_blood_group"
-            android:layout_width="0dp"
+            <EditText
+                android:id="@+id/et_mobile"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_25"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_weight="1"
+                android:background="@color/light"
+                android:inputType="phone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tupple_name"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text="@string/blood_group"
-            android:textColor="@color/red"
-            android:textSize="@dimen/text_size_18" />
+            android:layout_below="@id/tupple_mobile"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/sp_blood_group"
-            android:layout_height="@dimen/dp_25"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="bottom"
-            android:entries="@array/blood_groups"
-            android:layout_marginTop="@dimen/dp_5"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:layout_marginRight="@dimen/dp_20"
-            android:background="@color/light" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/name"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_18" />
 
-    <LinearLayout
-        android:id="@+id/tupple_last_donation_date"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tupple_blood_group"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dp_10">
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_25"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_weight="1"
+                android:background="@color/light"
+                android:inputType="text" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_last_donation_date"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <LinearLayout
+            android:id="@+id/tupple_blood_group"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/red"
-            android:textSize="@dimen/text_size_18"
-            android:gravity="end"
-            android:text="@string/last_donation_date"/>
+            android:layout_below="@id/tupple_name"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/et_last_donation_date"
-            android:layout_height="@dimen/dp_25"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:layout_marginRight="@dimen/dp_20"
-            android:background="@color/light"/>
+            <TextView
+                android:id="@+id/tv_blood_group"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/blood_group"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_18" />
 
-    </LinearLayout>
+            <Spinner
+                android:id="@+id/sp_blood_group"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_25"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_weight="1"
+                android:background="@color/light"
+                android:entries="@array/blood_groups" />
+        </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/tupple_no_of_donation"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tupple_last_donation_date"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dp_10">
-
-        <TextView
-            android:id="@+id/tv_no_of_donation"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <LinearLayout
+            android:id="@+id/tupple_last_donation_date"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/red"
-            android:textSize="@dimen/text_size_18"
-            android:gravity="end"
-            android:text="@string/no_of_donation"/>
+            android:layout_below="@id/tupple_blood_group"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/et_no_of_donation"
-            android:layout_height="@dimen/dp_25"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:layout_marginRight="@dimen/dp_20"
-            android:inputType="number"
-            android:background="@color/light"/>
+            <TextView
+                android:id="@+id/tv_last_donation_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/last_donation_date"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_18" />
 
-    </LinearLayout>
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="@dimen/dp_120"
-        android:layout_height="@dimen/dp_30"
-        android:layout_below="@id/tupple_no_of_donation"
-        android:clickable="true"
-        android:layout_marginTop="@dimen/dp_30"
-        android:background="@drawable/submit_btn_image_selector"
-        android:text="@string/add_donor"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:textSize="@dimen/text_size_15"
-        android:layout_alignLeft="@id/textView"/>
-</RelativeLayout>
+            <EditText
+                android:id="@+id/et_last_donation_date"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_25"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_weight="1"
+                android:background="@color/light" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tupple_no_of_donation"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tupple_last_donation_date"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_no_of_donation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/no_of_donation"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_18" />
+
+            <EditText
+                android:id="@+id/et_no_of_donation"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_25"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_weight="1"
+                android:background="@color/light"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tupple_address"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tupple_no_of_donation"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/address"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_18" />
+
+            <EditText
+                android:id="@+id/et_address"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_25"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_weight="1"
+                android:background="@color/light_black"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tupple_preferred_area"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tupple_address"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_preferred_area"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/preferred_area"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_18" />
+
+            <EditText
+                android:id="@+id/et_preferred_area"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_25"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_weight="1"
+                android:background="@color/light_black"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tupple_comment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tupple_preferred_area"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_comment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/comment"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_18" />
+
+            <EditText
+                android:id="@+id/et_comment"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_25"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_weight="1"
+                android:background="@color/light_black"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="@dimen/dp_30"
+            android:layout_alignLeft="@id/textView"
+            android:layout_below="@id/tupple_comment"
+            android:layout_marginTop="@dimen/dp_30"
+            android:background="@drawable/submit_btn_image_selector"
+            android:clickable="true"
+            android:text="@string/add_donor"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_15"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</ScrollView>

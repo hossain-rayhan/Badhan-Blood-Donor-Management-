@@ -22,6 +22,8 @@ import com.appsomehow.badhan.helper.DbTableName;
 import com.appsomehow.badhan.helper.PreferenceHelper;
 import com.appsomehow.badhan.model.Donor;
 
+import java.util.List;
+
 
 public class MainActivity extends BaseActionBarActivity {
 
@@ -43,6 +45,10 @@ public class MainActivity extends BaseActionBarActivity {
             preferenceHelper.setBoolean(Constant.IS_DB_CREATED, true);
         }
 
+        /*List<Donor> dList = DbManager.getInstance().getAllDonors();
+        for (Donor d : dList){
+            Log.e("key",""+d.getId());
+        }*/
         addListenerToSearchButton();
     }
 

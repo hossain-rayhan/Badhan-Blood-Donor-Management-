@@ -6,7 +6,10 @@ import java.util.Date;
 
 @DatabaseTable
 public class Donor {
-    @DatabaseField(id = true)
+    @DatabaseField(generatedId = true,allowGeneratedIdInsert=true)
+    private int id;
+
+    @DatabaseField
     private String mobile;
 
     @DatabaseField
@@ -21,15 +24,36 @@ public class Donor {
     @DatabaseField
     private int noOfDonation;
 
+    @DatabaseField
+    private String address;
+
+    @DatabaseField
+    private String preferredArea;
+
+    @DatabaseField
+    private String comment;
+
     public Donor() {
     }
 
-    public Donor(String mobile, String name, String bloodGroup, Date lastDonationDate, int noOfDonation) {
+    public Donor(int id, String mobile, String name, String bloodGroup, Date lastDonationDate, int noOfDonation, String address, String preferredArea, String comment) {
+        this.id = id;
         this.mobile = mobile;
         this.name = name;
         this.bloodGroup = bloodGroup;
         this.lastDonationDate = lastDonationDate;
         this.noOfDonation = noOfDonation;
+        this.address = address;
+        this.preferredArea = preferredArea;
+        this.comment = comment;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMobile() {
@@ -70,5 +94,29 @@ public class Donor {
 
     public void setNoOfDonation(int noOfDonation) {
         this.noOfDonation = noOfDonation;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPreferredArea() {
+        return preferredArea;
+    }
+
+    public void setPreferredArea(String preferredArea) {
+        this.preferredArea = preferredArea;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

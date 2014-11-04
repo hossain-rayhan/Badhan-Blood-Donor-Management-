@@ -38,10 +38,20 @@ public class DbManager {
         return donorList;
     }
 
-    public Donor getDonorWithMobile(String donorMobile){
+/*    public Donor getDonorWithMobile(String donorMobile){
         Donor donor = null;
         try {
             donor = getHelper().getDonorDao().queryForId(donorMobile);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return donor;
+    }*/
+
+    public Donor getDonorWithId(int donorId){
+        Donor donor = null;
+        try {
+            donor = getHelper().getDonorDao().queryForId(donorId);
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -8,6 +8,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_20"
         android:gravity="center_vertical">
 
         <TextView
@@ -60,7 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tupple_edit_all"
             android:layout_marginTop="@dimen/dp_10"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tv_mobile"
@@ -72,16 +75,16 @@
                 android:textColor="@color/red"
                 android:textSize="@dimen/text_size_18" />
 
-            <TextView
+            <EditText
                 android:id="@+id/et_mobile"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_25"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="bottom"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginRight="@dimen/dp_20"
                 android:layout_weight="1"
-                android:textSize="@dimen/text_size_15"
-                android:textStyle="bold|italic" />
+                android:background="@color/light"
+                android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
@@ -90,8 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tupple_mobile"
             android:layout_marginTop="@dimen/dp_10"
-            android:orientation="horizontal"
-            android:visibility="gone">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_name"
@@ -112,7 +114,18 @@
                 android:layout_marginRight="@dimen/dp_20"
                 android:layout_weight="1"
                 android:background="@color/light"
-                android:inputType="text" />
+                android:inputType="text"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/tv_display_name"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_25"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_weight="1"
+                android:textStyle="bold|italic"
+                android:textSize="@dimen/text_size_18"/>
         </LinearLayout>
 
         <LinearLayout
@@ -207,12 +220,105 @@
                 android:inputType="number" />
 
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/tupple_address"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tupple_no_of_donation"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/address"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_18" />
+
+            <EditText
+                android:id="@+id/et_address"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_25"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_weight="1"
+                android:background="@color/light_black"
+                android:inputType="text" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/tupple_preferred_area"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tupple_address"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_preferred_area"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/preferred_area"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_18" />
+
+            <EditText
+                android:id="@+id/et_preferred_area"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_25"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_weight="1"
+                android:background="@color/light_black"
+                android:inputType="text" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/tupple_comment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tupple_preferred_area"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_comment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/comment"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_18" />
+
+            <EditText
+                android:id="@+id/et_comment"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_25"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_weight="1"
+                android:background="@color/light_black"
+                android:inputType="text" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_update"
             android:layout_width="@dimen/dp_120"
             android:layout_height="@dimen/dp_30"
-            android:layout_below="@id/tupple_no_of_donation"
+            android:layout_below="@id/tupple_comment"
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/dp_30"
             android:background="@drawable/submit_btn_image_selector"
