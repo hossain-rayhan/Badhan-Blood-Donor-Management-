@@ -6,22 +6,22 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
 
 import com.appsomehow.badhan.adapter.DonorListAdapter;
 import com.appsomehow.badhan.helper.BaseActionBarActivity;
 import com.appsomehow.badhan.helper.DbManager;
 import com.appsomehow.badhan.helper.Helper;
 import com.appsomehow.badhan.model.Donor;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class DonorListActivity extends BaseActionBarActivity {
 
@@ -65,24 +65,35 @@ public class DonorListActivity extends BaseActionBarActivity {
                 textLength = inputSearch.getText().length();
                 searchedDonorList.clear();
                 donorList = DbManager.getInstance().getAllDonors();
+                String searchText = inputSearch.getText().toString();
+
                 for (int i = 0; i < donorList.size(); i++) {
-                    if (textLength <= donorList.get(i).getBloodGroup().length()) {
-                        if (inputSearch.getText().toString().equalsIgnoreCase((String) donorList.get(i).getBloodGroup().subSequence(0, textLength))) {
-                            searchedDonorList.add(donorList.get(i));
+                    Donor currentDonor = donorList.get(i);
+                    if (textLength <= currentDonor.getBloodGroup().length()) {
+                        if (searchText.equalsIgnoreCase((String) currentDonor.getBloodGroup().subSequence(0, textLength))) {
+                            searchedDonorList.add(currentDonor);
                             continue;
                         }
                     }
-                    if (textLength <= donorList.get(i).getMobile().length()) {
-                        if (inputSearch.getText().toString().equalsIgnoreCase((String) donorList.get(i).getMobile().subSequence(0, textLength))) {
-                            searchedDonorList.add(donorList.get(i));
+                    if (textLength <= currentDonor.getMobile().length()) {
+                        if (searchText.equalsIgnoreCase((String) currentDonor.getMobile().subSequence(0, textLength))) {
+                            searchedDonorList.add(currentDonor);
                             continue;
                         }
                     }
-                    if (textLength <= donorList.get(i).getName().length()) {
-                        if (inputSearch.getText().toString().equalsIgnoreCase((String) donorList.get(i).getName().subSequence(0, textLength))) {
-                            searchedDonorList.add(donorList.get(i));
-                            continue;
+                    if (textLength <= currentDonor.getName().length()) {
+                        String token;
+                        StringTokenizer st = new StringTokenizer(currentDonor.getName());
+                        while (st.hasMoreTokens()) {
+                            token = st.nextToken();
+                            if (token.length() < textLength)
+                                continue;
+                            if (searchText.equalsIgnoreCase((String)token.subSequence(0, textLength))) {
+                                searchedDonorList.add(currentDonor);
+                                break;
+                            }
                         }
+
                     }
                 }
                 donorListAdapter = new DonorListAdapter(DonorListActivity.this, R.layout.donor_list_item, searchedDonorList);
