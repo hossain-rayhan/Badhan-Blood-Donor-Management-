@@ -43,9 +43,9 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         List<String> allSql = new ArrayList<String>();
         try {
-            TableUtils.dropTable(connectionSource, Donor.class,true);
+            /*TableUtils.dropTable(connectionSource, Donor.class,true);
             TableUtils.createTable(connectionSource, Donor.class);
-            CSVToDbHelper.readCSVAndInserIntoDb(context, R.raw.donor, DbTableName.Donor);
+            CSVToDbHelper.readCSVAndInserIntoDb(context, R.raw.donor, DbTableName.Donor);*/
             for (String sql : allSql) {
                 sqLiteDatabase.execSQL(sql);
             }
